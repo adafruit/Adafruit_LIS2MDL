@@ -16,6 +16,7 @@
 #define LSM303AGR_MAG_H
 
 #include <Adafruit_BusIO_Register.h>
+
 #include <Adafruit_I2CDevice.h>
 #include <Adafruit_Sensor.h>
 #include <Wire.h>

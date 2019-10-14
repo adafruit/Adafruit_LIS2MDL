@@ -1,12 +1,23 @@
-# Adafruit LSM303DLHC Magnetometer Driver
+Adafruit_LSM303AGR_Mag [![Build Status](https://travis-ci.com/adafruit/Adafruit_LSM303AGR_Mag.svg?branch=master)](https://travis-ci.com/adafruit/Adafruit_LSM303AGR_Mag)
+================
 
-This driver is for the Adafruit LSM303AGR Breakout's Magnetometer (http://www.adafruit.com/products/1120), and is based on Adafruit's Unified Sensor Library (Adafruit_Sensor).
+<a href="https://www.adafruit.com/product/1120"><img src="assets/board.jpg?raw=true" width="500px"></a>
 
-## About the LSM303AGR ##
+# Adafruit LSM303AGR Magnetometer Library
+This library is for the Adafruit LSM303 Breakouts' (http://www.adafruit.com/products/1120) magnetometer, and is based on Adafruit's Unified Sensor Library (Adafruit_Sensor).
 
-The LSM303AGR is a digital (I2C) accelerometer and digital compass (magnetometer).  The magnetometer measures magnetic force, which is useful to detect magnetic north.
+Tested and works great with the Adafruit's LSM303 Breakout Boards
+* https://www.adafruit.com/product/1120
 
-More information on the LSM303 can be found in the datasheet: https://www.st.com/resource/en/datasheet/lsm303agr.pdf
+This chip uses I2C to communicate, 2 pins are required to interface
+
+Adafruit invests time and resources providing this open source code, please support Adafruit and open-source hardware by purchasing products from Adafruit!
+
+## About the LSM303 ##
+
+The LSM303 is a digital (I2C) accelerometer and digital compass (magnetometer) and accelerometer. The magnetometer measures magnetic force, which is useful to detect magnetic north.
+
+More information on the LSM303 can be found in the datasheet: http://www.adafruit.com/datasheets/LSM303AGRC.PDF
 
 ## What is the Adafruit Unified Sensor Library? ##
 
@@ -24,37 +35,8 @@ Light sensors will always report units in lux, gyroscopes will always report uni
 
 ## About this Driver ##
 
-Adafruit invests time and resources providing this open source code.  Please support Adafruit and open-source hardware by purchasing products from Adafruit!
-
 Written by Bryan Siepert for Adafruit Industries.
-<!-- START COMPATIBILITY TABLE -->
+BSD license, check license.txt for more information
+All text above must be included in any redistribution
 
-## Compatibility
-
-MCU                | Tested Works | Doesn't Work | Not Tested  | Notes
------------------- | :----------: | :----------: | :---------: | -----
-Atmega328 @ 16MHz  |      X       |             |            | 
-Atmega328 @ 12MHz  |      X       |             |            | 
-Atmega32u4 @ 16MHz |      X       |             |            | 
-Atmega32u4 @ 8MHz  |      X       |             |            | 
-ESP8266            |      X       |             |            | 
-Atmega2560 @ 16MHz |      X       |             |            | SDA/SCL D20/D21
-ATSAM3X8E          |      X       |             |            | SDA/SCL D20/D21
-ATSAM21D           |      X       |             |            | 
-ATtiny85 @ 16MHz   |      X       |             |            | 
-ATtiny85 @ 8MHz    |      X       |             |            | 
-Intel Curie @ 32MHz |      X       |             |            | 
-STM32F2            |             |             |     X       | 
-
-  * ATmega328 @ 16MHz : Arduino UNO, Adafruit Pro Trinket 5V, Adafruit Metro 328, Adafruit Metro Mini
-  * ATmega328 @ 12MHz : Adafruit Pro Trinket 3V
-  * ATmega32u4 @ 16MHz : Arduino Leonardo, Arduino Micro, Arduino Yun, Teensy 2.0
-  * ATmega32u4 @ 8MHz : Adafruit Flora, Bluefruit Micro
-  * ESP8266 : Adafruit Huzzah
-  * ATmega2560 @ 16MHz : Arduino Mega
-  * ATSAM3X8E : Arduino Due
-  * ATSAM21D : Arduino Zero, M0 Pro
-  * ATtiny85 @ 16MHz : Adafruit Trinket 5V
-  * ATtiny85 @ 8MHz : Adafruit Gemma, Arduino Gemma, Adafruit Trinket 3V
-
-<!-- END COMPATIBILITY TABLE -->
+To install, use the Arduino Library Manager and search for "Adafruit LSM303 Accel" and install the library.
