@@ -20,6 +20,7 @@ before_install:
 
 install:
   - arduino --install-library "Adafruit Unified Sensor"
+  - arduino --install-library "Adafruit BusIO"
 
 script:
   - build_main_platforms
