@@ -13,9 +13,9 @@
   BSD license, all text above must be included in any redistribution
  ***************************************************************************/
 #if ARDUINO >= 100
- #include "Arduino.h"
+#include "Arduino.h"
 #else
- #include "WProgram.h"
+#include "WProgram.h"
 #endif
 
 #include <Wire.h>
@@ -24,7 +24,6 @@
 
 #include "Adafruit_LSM303AGR_Mag.h"
 
-
 /***************************************************************************
  MAGNETOMETER
  ***************************************************************************/
@@ -32,18 +31,14 @@
  PRIVATE FUNCTIONS
  ***************************************************************************/
 
-
-
 /**************************************************************************/
 /*!
     @brief  Reads the raw data from the sensor
 */
 /**************************************************************************/
-void Adafruit_LSM303AGR_Mag_Unified::read()
-{
+void Adafruit_LSM303AGR_Mag_Unified::read() {
 
-
-    Adafruit_BusIO_Register data_reg =
+  Adafruit_BusIO_Register data_reg =
       Adafruit_BusIO_Register(i2c_dev, LSM303AGR_OUTX_L_REG, 6);
 
   uint16_t buffer[3];
@@ -52,7 +47,6 @@ void Adafruit_LSM303AGR_Mag_Unified::read()
   raw.x = buffer[0];
   raw.y = buffer[1];
   raw.z = buffer[2];
-
 }
 
 /***************************************************************************
@@ -65,7 +59,8 @@ void Adafruit_LSM303AGR_Mag_Unified::read()
     @param sensorID an option ID to differentiate the sensor from others
 */
 /**************************************************************************/
-Adafruit_LSM303AGR_Mag_Unified::Adafruit_LSM303AGR_Mag_Unified(int32_t sensorID) {
+Adafruit_LSM303AGR_Mag_Unified::Adafruit_LSM303AGR_Mag_Unified(
+    int32_t sensorID) {
   _sensorID = sensorID;
 
   // Clear the raw mag data
@@ -101,60 +96,59 @@ bool Adafruit_LSM303AGR_Mag_Unified::begin(uint8_t i2c_address, TwoWire *wire)
       Adafruit_BusIO_Register(i2c_dev, LSM303AGR_WHO_AM_I, 1);
 
   // make sure we're talking to the right chip
-  if (chip_id.read() != _CHIP_ID) { 
-    Serial.print("chip id is ");Serial.println(chip_id.read());
+  if (chip_id.read() != _CHIP_ID) {
+    Serial.print("chip id is ");
+    Serial.println(chip_id.read());
     // No LSM303AGR detected ... return false
     return false;
   }
 
-    config_a = new
-      Adafruit_BusIO_Register(i2c_dev, LSM303AGR_CFG_REG_A, 1);
+  config_a = new Adafruit_BusIO_Register(i2c_dev, LSM303AGR_CFG_REG_A, 1);
 
-    // enable int latching
-    reset();
+  // enable int latching
+  reset();
 
   return true;
 }
 /*!
  *    @brief  Resets the sensor to an initial state
  */
-void Adafruit_LSM303AGR_Mag_Unified::reset(void){
-    
-    Adafruit_BusIO_Register config_c = 
+void Adafruit_LSM303AGR_Mag_Unified::reset(void) {
+
+  Adafruit_BusIO_Register config_c =
       Adafruit_BusIO_Register(i2c_dev, LSM303AGR_CFG_REG_C, 1);
 
-    Adafruit_BusIO_RegisterBits reset =
+  Adafruit_BusIO_RegisterBits reset =
       Adafruit_BusIO_RegisterBits(config_a, 1, 5);
 
-    Adafruit_BusIO_RegisterBits reboot =
+  Adafruit_BusIO_RegisterBits reboot =
       Adafruit_BusIO_RegisterBits(config_a, 1, 6);
 
-    Adafruit_BusIO_RegisterBits mode =
-      Adafruit_BusIO_RegisterBits(config_a, 1, 0);    
+  Adafruit_BusIO_RegisterBits mode =
+      Adafruit_BusIO_RegisterBits(config_a, 1, 0);
 
-    Adafruit_BusIO_RegisterBits data_rate =
+  Adafruit_BusIO_RegisterBits data_rate =
       Adafruit_BusIO_RegisterBits(config_a, 2, 2);
 
-    Adafruit_BusIO_RegisterBits temp_compensation =
-      Adafruit_BusIO_RegisterBits(config_a, 1, 7);    
+  Adafruit_BusIO_RegisterBits temp_compensation =
+      Adafruit_BusIO_RegisterBits(config_a, 1, 7);
 
-    Adafruit_BusIO_RegisterBits bdu =
-      Adafruit_BusIO_RegisterBits(&config_c, 1, 4);    
-    
-    reset.write(1);
-    delay(100);
-    reboot.write(1);
-    delay(100);
-    bdu.write(1);
-    temp_compensation.write(1);
+  Adafruit_BusIO_RegisterBits bdu =
+      Adafruit_BusIO_RegisterBits(&config_c, 1, 4);
 
-    mode.write(0x00); // set to continuous mode
+  reset.write(1);
+  delay(100);
+  reboot.write(1);
+  delay(100);
+  bdu.write(1);
+  temp_compensation.write(1);
 
-    // self._int_latched = True
-    // self._int_reg_polarity = True
-    // self._int_iron_off = False
-    // self._interrupt_pin_putput = True
+  mode.write(0x00); // set to continuous mode
 
+  // self._int_latched = True
+  // self._int_reg_polarity = True
+  // self._int_iron_off = False
+  // self._interrupt_pin_putput = True
 }
 
 /**************************************************************************/
@@ -163,12 +157,11 @@ void Adafruit_LSM303AGR_Mag_Unified::reset(void){
     @param rate The new `lsm303AGRMagRate` to set
 */
 /**************************************************************************/
-void Adafruit_LSM303AGR_Mag_Unified::setDataRate(lsm303AGRMagRate rate)
-{
-    Adafruit_BusIO_RegisterBits data_rate =
+void Adafruit_LSM303AGR_Mag_Unified::setDataRate(lsm303AGRMagRate rate) {
+  Adafruit_BusIO_RegisterBits data_rate =
       Adafruit_BusIO_RegisterBits(config_a, 2, 2);
-    
-    data_rate.write(rate);
+
+  data_rate.write(rate);
 }
 
 /**************************************************************************/
@@ -177,12 +170,11 @@ void Adafruit_LSM303AGR_Mag_Unified::setDataRate(lsm303AGRMagRate rate)
     @returns The current data rate as a `lsm303AGRMagRate`
 */
 /**************************************************************************/
-lsm303AGRMagRate Adafruit_LSM303AGR_Mag_Unified::getDataRate(void)
-{
-    Adafruit_BusIO_RegisterBits data_rate =
+lsm303AGRMagRate Adafruit_LSM303AGR_Mag_Unified::getDataRate(void) {
+  Adafruit_BusIO_RegisterBits data_rate =
       Adafruit_BusIO_RegisterBits(config_a, 2, 2);
-    
-    return (lsm303AGRMagRate)data_rate.read();
+
+  return (lsm303AGRMagRate)data_rate.read();
 }
 
 /**************************************************************************/
@@ -200,15 +192,18 @@ bool Adafruit_LSM303AGR_Mag_Unified::getEvent(sensors_event_t *event) {
   /* Read new data */
   read();
 
-  event->version   = sizeof(sensors_event_t);
+  event->version = sizeof(sensors_event_t);
   event->sensor_id = _sensorID;
-  event->type      = SENSOR_TYPE_MAGNETIC_FIELD;
+  event->type = SENSOR_TYPE_MAGNETIC_FIELD;
   event->timestamp = millis();
-  event->magnetic.x = (float)raw.x * LSM303AGR_MAG_LSB * LSM303AGR_MILLIGAUSS_TO_MICROTESLA;
-  event->magnetic.y = (float)raw.y * LSM303AGR_MAG_LSB * LSM303AGR_MILLIGAUSS_TO_MICROTESLA;
-  event->magnetic.z = (float)raw.z * LSM303AGR_MAG_LSB * LSM303AGR_MILLIGAUSS_TO_MICROTESLA;
+  event->magnetic.x =
+      (float)raw.x * LSM303AGR_MAG_LSB * LSM303AGR_MILLIGAUSS_TO_MICROTESLA;
+  event->magnetic.y =
+      (float)raw.y * LSM303AGR_MAG_LSB * LSM303AGR_MILLIGAUSS_TO_MICROTESLA;
+  event->magnetic.z =
+      (float)raw.z * LSM303AGR_MAG_LSB * LSM303AGR_MILLIGAUSS_TO_MICROTESLA;
 
-	return true;
+  return true;
 }
 
 /**************************************************************************/
@@ -221,13 +216,13 @@ void Adafruit_LSM303AGR_Mag_Unified::getSensor(sensor_t *sensor) {
   memset(sensor, 0, sizeof(sensor_t));
 
   /* Insert the sensor name in the fixed length char array */
-  strncpy (sensor->name, "LSM303AGR Mag", sizeof(sensor->name) - 1);
-  sensor->name[sizeof(sensor->name)- 1] = 0;
-  sensor->version     = 1;
-  sensor->sensor_id   = _sensorID;
-  sensor->type        = SENSOR_TYPE_MAGNETIC_FIELD;
-  sensor->min_delay   = 0;
-  sensor->max_value   = 0.0F; // TBD
-  sensor->min_value   = 0.0F; // TBD
-  sensor->resolution  = 0.0F; // TBD
+  strncpy(sensor->name, "LSM303AGR Mag", sizeof(sensor->name) - 1);
+  sensor->name[sizeof(sensor->name) - 1] = 0;
+  sensor->version = 1;
+  sensor->sensor_id = _sensorID;
+  sensor->type = SENSOR_TYPE_MAGNETIC_FIELD;
+  sensor->min_delay = 0;
+  sensor->max_value = 0.0F;  // TBD
+  sensor->min_value = 0.0F;  // TBD
+  sensor->resolution = 0.0F; // TBD
 }
