@@ -94,6 +94,8 @@ public:
   void getSensor(sensor_t *);
   void reset(void);
 
+  void enableInterrupts(bool);
+  void interruptsActiveHigh(bool);
   lsm303AGRMagData raw; ///< struct instance to hold raw data
 
 private:

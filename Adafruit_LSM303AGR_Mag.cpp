@@ -222,3 +222,39 @@ void Adafruit_LSM303AGR_Mag_Unified::getSensor(sensor_t *sensor) {
   sensor->min_value = 0.0F;  // TBD
   sensor->resolution = 0.0F; // TBD
 }
+
+/*************************************************************************/
+/*!
+    @brief Enable interrupts
+    @param enable Set to True to enable interrupts, set to False to disable
+*/
+void Adafruit_LSM303AGR_Mag_Unified::enableInterrupts(bool enable){
+  Adafruit_BusIO_Register int_ctrl=
+      Adafruit_BusIO_Register(i2c_dev, LSM303AGR_INT_CRTL_REG);
+  Adafruit_BusIO_Register cfg_c =
+      Adafruit_BusIO_Register(i2c_dev, LSM303AGR_CFG_REG_C);
+
+  Adafruit_BusIO_RegisterBits enable_ints =
+      Adafruit_BusIO_RegisterBits(&int_ctrl, 1, 0);
+  Adafruit_BusIO_RegisterBits int_pin_output =
+      Adafruit_BusIO_RegisterBits(&cfg_c, 1, 6);
+
+  enable_ints.write(enable);
+  int_pin_output.write(enable);
+
+}
+
+/*************************************************************************/
+/*!
+    @brief Sets the polarity of the interrupt pin
+    @param active_high Set to true to make the int pin active high, false
+    to set as active low
+*/
+void Adafruit_LSM303AGR_Mag_Unified::interruptsActiveHigh(bool active_high){
+  Adafruit_BusIO_Register int_ctrl=
+      Adafruit_BusIO_Register(i2c_dev, LSM303AGR_INT_CRTL_REG);
+
+  Adafruit_BusIO_RegisterBits active_high_bit =
+      Adafruit_BusIO_RegisterBits(&int_ctrl, 1, 2);
+  active_high_bit.write(active_high);
+}
