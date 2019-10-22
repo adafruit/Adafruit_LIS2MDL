@@ -83,11 +83,9 @@ Adafruit_LSM303AGR_Mag_Unified::Adafruit_LSM303AGR_Mag_Unified(
 bool Adafruit_LSM303AGR_Mag_Unified::begin(uint8_t i2c_address, TwoWire *wire)
 
 {
-  // Enable I2C
   i2c_dev = new Adafruit_I2CDevice(i2c_address, wire);
 
   if (!i2c_dev->begin()) {
-    Serial.println("Failed to init i2c address");
     return false;
   }
 
@@ -97,8 +95,7 @@ bool Adafruit_LSM303AGR_Mag_Unified::begin(uint8_t i2c_address, TwoWire *wire)
 
   // make sure we're talking to the right chip
   if (chip_id.read() != _CHIP_ID) {
-    Serial.print("chip id is ");
-    Serial.println(chip_id.read());
+
     // No LSM303AGR detected ... return false
     return false;
   }
