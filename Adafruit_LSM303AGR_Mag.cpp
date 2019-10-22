@@ -95,7 +95,6 @@ bool Adafruit_LSM303AGR_Mag_Unified::begin(uint8_t i2c_address, TwoWire *wire)
 
   // make sure we're talking to the right chip
   if (chip_id.read() != _CHIP_ID) {
-
     // No LSM303AGR detected ... return false
     return false;
   }
@@ -122,7 +121,7 @@ void Adafruit_LSM303AGR_Mag_Unified::reset(void) {
       Adafruit_BusIO_RegisterBits(config_a, 1, 6);
 
   Adafruit_BusIO_RegisterBits mode =
-      Adafruit_BusIO_RegisterBits(config_a, 1, 0);
+      Adafruit_BusIO_RegisterBits(config_a, 2, 0);
 
   Adafruit_BusIO_RegisterBits data_rate =
       Adafruit_BusIO_RegisterBits(config_a, 2, 2);
