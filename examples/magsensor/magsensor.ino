@@ -34,7 +34,7 @@ void setup(void) {
   while (!Serial)
     ; // will pause Zero, Leonardo, etc until serial console opens
 #endif
-  Serial.begin(9600);
+  Serial.begin(115200);
   Serial.println("Magnetometer Test");
   Serial.println("");
 

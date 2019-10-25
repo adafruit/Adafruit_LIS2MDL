@@ -7,7 +7,7 @@ Adafruit_LSM303AGR_Mag_Unified mag = Adafruit_LSM303AGR_Mag_Unified(12345);
 
 void setup(void) 
 {
-  Serial.begin(9600);
+  Serial.begin(115200);
   Serial.println("Magnetometer Test"); Serial.println("");
   
   /* Initialise the sensor */
