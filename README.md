@@ -4,10 +4,10 @@ Adafruit_LIS2MDL [![Build Status](https://github.com/adafruit/Adafruit_LIS2MDL/w
 <a href="https://www.adafruit.com/product/1120"><img src="assets/board.jpg?raw=true" width="500px"></a>
 
 # Adafruit LIS2MDL Magnetometer Library
-This library is for the Adafruit LIS2MDL and LSM303AGR Breakouts (http://www.adafruit.com/products/1120), and is based on Adafruit's Unified Sensor Library (Adafruit_Sensor).
+This library is for the Adafruit LIS2MDL and LSM303AGR Breakouts
 
 Tested and works great with Adafruit's LIS2MDL and LSM303AGR Breakout Boards
-* https://www.adafruit.com/product/1120
+* https://www.adafruit.com/product/4413
 * https://www.adafruit.com/product/4488
 
 This chip uses I2C to communicate, 2 pins are required to interface
