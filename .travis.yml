@@ -21,6 +21,9 @@ before_install:
 install:
   - arduino --install-library "Adafruit Unified Sensor"
   - arduino --install-library "Adafruit BusIO"
+  - arduino --install-library "Adafruit SSD1306"
+  - arduino --install-library "Adafruit LSM303 Accel"
+  - arduino --install-library "Adafruit GFX Library"
 
 script:
   - build_main_platforms
