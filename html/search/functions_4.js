@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['interruptsactivehigh',['interruptsActiveHigh',['../class_adafruit___l_s_m303_a_g_r___mag___unified.html#aad0ccf40d2712fcf16514dd9e038a6c1',1,'Adafruit_LSM303AGR_Mag_Unified']]]
+  ['interruptsactivehigh',['interruptsActiveHigh',['../class_adafruit___l_i_s2_m_d_l.html#a89fc563c439e76119a682805a416be3e',1,'Adafruit_LIS2MDL']]]
 ];

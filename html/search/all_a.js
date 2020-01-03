@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['z',['z',['../structlsm303_a_g_r_mag_data__s.html#a15f351dccca4c8e88519e8eca71ac7b4',1,'lsm303AGRMagData_s']]]
+  ['z',['z',['../structlis2mdl__data.html#a4f1e367e3f57332d1eb1ac8b7d1da5b9',1,'lis2mdl_data']]]
 ];

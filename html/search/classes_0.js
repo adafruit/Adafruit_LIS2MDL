@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['adafruit_5flsm303agr_5fmag_5funified',['Adafruit_LSM303AGR_Mag_Unified',['../class_adafruit___l_s_m303_a_g_r___mag___unified.html',1,'']]]
+  ['adafruit_5flis2mdl',['Adafruit_LIS2MDL',['../class_adafruit___l_i_s2_m_d_l.html',1,'']]]
 ];

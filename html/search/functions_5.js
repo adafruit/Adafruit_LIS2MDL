@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['reset',['reset',['../class_adafruit___l_s_m303_a_g_r___mag___unified.html#a04a5f518b4216b59ef858b1173eed8f1',1,'Adafruit_LSM303AGR_Mag_Unified']]]
+  ['reset',['reset',['../class_adafruit___l_i_s2_m_d_l.html#aac786221fa7803f980d231addde41063',1,'Adafruit_LIS2MDL']]]
 ];
