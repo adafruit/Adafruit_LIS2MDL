@@ -1,9 +1,9 @@
 #include <Wire.h>
 #include <Adafruit_Sensor.h>
-#include <Adafruit_LSM303AGR_Mag.h>
+#include <Adafruit_LIS2MDL.h>
 
 
-Adafruit_LSM303AGR_Mag_Unified mag = Adafruit_LSM303AGR_Mag_Unified(12345);
+Adafruit_LIS2MDL mag = Adafruit_LIS2MDL(12345);
 
 float MagMinX, MagMaxX;
 float MagMinY, MagMaxY;
@@ -11,31 +11,31 @@ float MagMinZ, MagMaxZ;
 
 long lastDisplayTime;
 
-void setup(void) 
+void setup(void)
 {
   Serial.begin(115200);
-  Serial.println("LSM303 Calibration"); Serial.println("");
-  
+  Serial.println("LIS2MDL Calibration"); Serial.println("");
+
   /* Initialise the magnetometer */
   if(!mag.begin())
   {
-    /* There was a problem detecting the LSM303 ... check your connections */
-    Serial.println("Ooops, no LSM303 detected ... Check your wiring!");
+    /* There was a problem detecting the LIS2MDL ... check your connections */
+    Serial.println("Ooops, no LIS2MDL detected ... Check your wiring!");
     while(1);
   }
   lastDisplayTime = millis();
 }
 
-void loop(void) 
+void loop(void)
 {
-  /* Get a new sensor event */ 
-  sensors_event_t magEvent; 
-  
+  /* Get a new sensor event */
+  sensors_event_t magEvent;
+
   mag.getEvent(&magEvent);
-  
+
   if (magEvent.magnetic.x < MagMinX) MagMinX = magEvent.magnetic.x;
   if (magEvent.magnetic.x > MagMaxX) MagMaxX = magEvent.magnetic.x;
-  
+
   if (magEvent.magnetic.y < MagMinY) MagMinY = magEvent.magnetic.y;
   if (magEvent.magnetic.y > MagMaxY) MagMaxY = magEvent.magnetic.y;
 

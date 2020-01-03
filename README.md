@@ -1,23 +1,24 @@
-Adafruit_LSM303AGR_Mag [![Build Status](https://travis-ci.com/adafruit/Adafruit_LSM303AGR_Mag.svg?branch=master)](https://travis-ci.com/adafruit/Adafruit_LSM303AGR_Mag)
+Adafruit_LIS2MDL [![Build Status](https://travis-ci.com/adafruit/Adafruit_LIS2MDL.svg?branch=master)](https://travis-ci.com/adafruit/Adafruit_LIS2MDL)
 ================
 
 <a href="https://www.adafruit.com/product/1120"><img src="assets/board.jpg?raw=true" width="500px"></a>
 
-# Adafruit LSM303AGR Magnetometer Library
-This library is for the Adafruit LSM303 Breakouts' (http://www.adafruit.com/products/1120) magnetometer, and is based on Adafruit's Unified Sensor Library (Adafruit_Sensor).
+# Adafruit LIS2MDL Magnetometer Library
+This library is for the Adafruit LIS2MDL and LSM303AGR Breakouts (http://www.adafruit.com/products/1120), and is based on Adafruit's Unified Sensor Library (Adafruit_Sensor).
 
-Tested and works great with the Adafruit's LSM303 Breakout Boards
+Tested and works great with Adafruit's LIS2MDL and LSM303AGR Breakout Boards
 * https://www.adafruit.com/product/1120
+* https://www.adafruit.com/product/4488
 
 This chip uses I2C to communicate, 2 pins are required to interface
 
 Adafruit invests time and resources providing this open source code, please support Adafruit and open-source hardware by purchasing products from Adafruit!
 
-## About the LSM303 ##
+## About the LIS2MDL ##
 
-The LSM303 is a digital (I2C) accelerometer and digital compass (magnetometer) and accelerometer. The magnetometer measures magnetic force, which is useful to detect magnetic north.
-
-More information on the LSM303 can be found in the datasheet: http://www.adafruit.com/datasheets/LSM303AGRC.PDF
+The LIS2MDL is a 3-axis magnetometer made by ST. Additionally, the LIS2MDL is available packaged with an accelerometer in the ST LSM303AGR 6-dof IMUs. The magnetometer measures magnetic force, which is useful to detect magnetic north.
+More information on the LIS2MDL can be found in the datasheet: https://www.st.com/resource/en/datasheet/lis2mdl.pdf
+Information on the LSM303AGR can be found in the datasheet: http://www.adafruit.com/datasheets/LSM303AGRC.PDF
 
 ## What is the Adafruit Unified Sensor Library? ##
 
@@ -39,4 +40,4 @@ Written by Bryan Siepert for Adafruit Industries.
 BSD license, check license.txt for more information
 All text above must be included in any redistribution
 
-To install, use the Arduino Library Manager and search for "Adafruit LSM303 Accel" and install the library.
+To install, use the Arduino Library Manager and search for "Adafruit LIS2MDL" and install the library.

@@ -1,9 +1,9 @@
-#include <Adafruit_LSM303AGR_Mag.h>
+#include <Adafruit_LIS2MDL.h>
 #include <Adafruit_Sensor.h>
 #include <Wire.h>
 
 /* Assign a unique ID to this sensor at the same time */
-Adafruit_LSM303AGR_Mag_Unified mag = Adafruit_LSM303AGR_Mag_Unified(12345);
+Adafruit_LIS2MDL mag = Adafruit_LIS2MDL(12345);
 
 void displaySensorDetails(void) {
   sensor_t sensor;
@@ -43,8 +43,8 @@ void setup(void) {
 
   /* Initialise the sensor */
   if (!mag.begin()) {
-    /* There was a problem detecting the LSM303 ... check your connections */
-    Serial.println("Ooops, no LSM303AGR detected ... Check your wiring!");
+    /* There was a problem detecting the LIS2MDL ... check your connections */
+    Serial.println("Ooops, no LIS2MDL detected ... Check your wiring!");
     while (1)
       ;
   }

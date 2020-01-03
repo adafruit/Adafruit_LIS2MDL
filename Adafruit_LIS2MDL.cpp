@@ -1,12 +1,12 @@
 /***************************************************************************
-  This is a library for the LSM303AGR Magnentometer/compass
+  This is a library for the LIS2MDL Magnentometer/compass
 
-  Designed specifically to work with the Adafruit LSM303AGR Breakout
+  Designed specifically to work with the Adafruit LSM303AGR and LIS2MDL Breakouts
 
   These displays use I2C to communicate, 2 pins are required to interface.
 
   Adafruit invests time and resources providing this open source code,
-  please support Adafruit andopen-source hardware by purchasing products
+  please support Adafruit and open-source hardware by purchasing products
   from Adafruit!
 
   Written by Bryan Siepert for Adafruit Industries.
@@ -22,7 +22,7 @@
 
 #include <limits.h>
 
-#include "Adafruit_LSM303AGR_Mag.h"
+#include "Adafruit_LIS2MDL.h"
 
 /***************************************************************************
  MAGNETOMETER
@@ -36,10 +36,10 @@
     @brief  Reads the raw data from the sensor
 */
 /**************************************************************************/
-void Adafruit_LSM303AGR_Mag_Unified::read() {
+void Adafruit_LIS2MDL::read() {
 
   Adafruit_BusIO_Register data_reg =
-      Adafruit_BusIO_Register(i2c_dev, LSM303AGR_OUTX_L_REG, 6);
+      Adafruit_BusIO_Register(i2c_dev, LIS2MDL_OUTX_L_REG, 6);
 
   uint16_t buffer[3];
   data_reg.read((uint8_t *)buffer, 6);
@@ -55,11 +55,11 @@ void Adafruit_LSM303AGR_Mag_Unified::read() {
 
 /**************************************************************************/
 /*!
-    @brief  Instantiates a new Adafruit_LSM303 class
+    @brief  Instantiates a new Adafruit_LIS2MDL class
     @param sensorID an option ID to differentiate the sensor from others
 */
 /**************************************************************************/
-Adafruit_LSM303AGR_Mag_Unified::Adafruit_LSM303AGR_Mag_Unified(
+Adafruit_LIS2MDL::Adafruit_LIS2MDL(
     int32_t sensorID) {
   _sensorID = sensorID;
 
@@ -80,7 +80,7 @@ Adafruit_LSM303AGR_Mag_Unified::Adafruit_LSM303AGR_Mag_Unified(
  *            The Wire object to be used for I2C connections.
  *    @return True if initialization was successful, otherwise false.
  */
-bool Adafruit_LSM303AGR_Mag_Unified::begin(uint8_t i2c_address, TwoWire *wire)
+bool Adafruit_LIS2MDL::begin(uint8_t i2c_address, TwoWire *wire)
 
 {
   i2c_dev = new Adafruit_I2CDevice(i2c_address, wire);
@@ -91,15 +91,15 @@ bool Adafruit_LSM303AGR_Mag_Unified::begin(uint8_t i2c_address, TwoWire *wire)
 
   // Check connection
   Adafruit_BusIO_Register chip_id =
-      Adafruit_BusIO_Register(i2c_dev, LSM303AGR_WHO_AM_I, 1);
+      Adafruit_BusIO_Register(i2c_dev, LIS2MDL_WHO_AM_I, 1);
 
   // make sure we're talking to the right chip
   if (chip_id.read() != _CHIP_ID) {
-    // No LSM303AGR detected ... return false
+    // No LIS2MDL detected ... return false
     return false;
   }
 
-  config_a = new Adafruit_BusIO_Register(i2c_dev, LSM303AGR_CFG_REG_A, 1);
+  config_a = new Adafruit_BusIO_Register(i2c_dev, LIS2MDL_CFG_REG_A, 1);
 
   // enable int latching
   reset();
@@ -109,10 +109,10 @@ bool Adafruit_LSM303AGR_Mag_Unified::begin(uint8_t i2c_address, TwoWire *wire)
 /*!
  *    @brief  Resets the sensor to an initial state
  */
-void Adafruit_LSM303AGR_Mag_Unified::reset(void) {
+void Adafruit_LIS2MDL::reset(void) {
 
   Adafruit_BusIO_Register config_c =
-      Adafruit_BusIO_Register(i2c_dev, LSM303AGR_CFG_REG_C, 1);
+      Adafruit_BusIO_Register(i2c_dev, LIS2MDL_CFG_REG_C, 1);
 
   Adafruit_BusIO_RegisterBits reset =
       Adafruit_BusIO_RegisterBits(config_a, 1, 5);
@@ -150,10 +150,10 @@ void Adafruit_LSM303AGR_Mag_Unified::reset(void) {
 /**************************************************************************/
 /*!
     @brief  Sets the magnetometer's update rate
-    @param rate The new `lsm303AGRMagRate` to set
+    @param rate The new `lis2mdl_rate_t` to set
 */
 /**************************************************************************/
-void Adafruit_LSM303AGR_Mag_Unified::setDataRate(lsm303AGRMagRate rate) {
+void Adafruit_LIS2MDL::setDataRate(lis2mdl_rate_t rate) {
   Adafruit_BusIO_RegisterBits data_rate =
       Adafruit_BusIO_RegisterBits(config_a, 2, 2);
 
@@ -163,14 +163,14 @@ void Adafruit_LSM303AGR_Mag_Unified::setDataRate(lsm303AGRMagRate rate) {
 /**************************************************************************/
 /*!
     @brief  Gets the magnetometer's update rate
-    @returns The current data rate as a `lsm303AGRMagRate`
+    @returns The current data rate as a `lis2mdl_rate_t`
 */
 /**************************************************************************/
-lsm303AGRMagRate Adafruit_LSM303AGR_Mag_Unified::getDataRate(void) {
+lis2mdl_rate_t Adafruit_LIS2MDL::getDataRate(void) {
   Adafruit_BusIO_RegisterBits data_rate =
       Adafruit_BusIO_RegisterBits(config_a, 2, 2);
 
-  return (lsm303AGRMagRate)data_rate.read();
+  return (lis2mdl_rate_t)data_rate.read();
 }
 
 /**************************************************************************/
@@ -180,7 +180,7 @@ lsm303AGRMagRate Adafruit_LSM303AGR_Mag_Unified::getDataRate(void) {
     @returns true, always
 */
 /**************************************************************************/
-bool Adafruit_LSM303AGR_Mag_Unified::getEvent(sensors_event_t *event) {
+bool Adafruit_LIS2MDL::getEvent(sensors_event_t *event) {
 
   /* Clear the event */
   memset(event, 0, sizeof(sensors_event_t));
@@ -193,11 +193,11 @@ bool Adafruit_LSM303AGR_Mag_Unified::getEvent(sensors_event_t *event) {
   event->type = SENSOR_TYPE_MAGNETIC_FIELD;
   event->timestamp = millis();
   event->magnetic.x =
-      (float)raw.x * LSM303AGR_MAG_LSB * LSM303AGR_MILLIGAUSS_TO_MICROTESLA;
+      (float)raw.x * LIS2MDL_MAG_LSB * LIS2MDL_MILLIGAUSS_TO_MICROTESLA;
   event->magnetic.y =
-      (float)raw.y * LSM303AGR_MAG_LSB * LSM303AGR_MILLIGAUSS_TO_MICROTESLA;
+      (float)raw.y * LIS2MDL_MAG_LSB * LIS2MDL_MILLIGAUSS_TO_MICROTESLA;
   event->magnetic.z =
-      (float)raw.z * LSM303AGR_MAG_LSB * LSM303AGR_MILLIGAUSS_TO_MICROTESLA;
+      (float)raw.z * LIS2MDL_MAG_LSB * LIS2MDL_MILLIGAUSS_TO_MICROTESLA;
 
   return true;
 }
@@ -207,12 +207,12 @@ bool Adafruit_LSM303AGR_Mag_Unified::getEvent(sensors_event_t *event) {
     @brief  Gets the sensor_t data
 */
 /**************************************************************************/
-void Adafruit_LSM303AGR_Mag_Unified::getSensor(sensor_t *sensor) {
+void Adafruit_LIS2MDL::getSensor(sensor_t *sensor) {
   /* Clear the sensor_t object */
   memset(sensor, 0, sizeof(sensor_t));
 
   /* Insert the sensor name in the fixed length char array */
-  strncpy(sensor->name, "LSM303AGR Mag", sizeof(sensor->name) - 1);
+  strncpy(sensor->name, "LIS2MDL", sizeof(sensor->name) - 1);
   sensor->name[sizeof(sensor->name) - 1] = 0;
   sensor->version = 1;
   sensor->sensor_id = _sensorID;
@@ -228,11 +228,11 @@ void Adafruit_LSM303AGR_Mag_Unified::getSensor(sensor_t *sensor) {
     @brief Enable interrupts
     @param enable Set to True to enable interrupts, set to False to disable
 */
-void Adafruit_LSM303AGR_Mag_Unified::enableInterrupts(bool enable){
+void Adafruit_LIS2MDL::enableInterrupts(bool enable){
   Adafruit_BusIO_Register int_ctrl=
-      Adafruit_BusIO_Register(i2c_dev, LSM303AGR_INT_CRTL_REG);
+      Adafruit_BusIO_Register(i2c_dev, LIS2MDL_INT_CRTL_REG);
   Adafruit_BusIO_Register cfg_c =
-      Adafruit_BusIO_Register(i2c_dev, LSM303AGR_CFG_REG_C);
+      Adafruit_BusIO_Register(i2c_dev, LIS2MDL_CFG_REG_C);
 
   Adafruit_BusIO_RegisterBits enable_ints =
       Adafruit_BusIO_RegisterBits(&int_ctrl, 1, 0);
@@ -250,9 +250,9 @@ void Adafruit_LSM303AGR_Mag_Unified::enableInterrupts(bool enable){
     @param active_high Set to true to make the int pin active high, false
     to set as active low
 */
-void Adafruit_LSM303AGR_Mag_Unified::interruptsActiveHigh(bool active_high){
+void Adafruit_LIS2MDL::interruptsActiveHigh(bool active_high){
   Adafruit_BusIO_Register int_ctrl=
-      Adafruit_BusIO_Register(i2c_dev, LSM303AGR_INT_CRTL_REG);
+      Adafruit_BusIO_Register(i2c_dev, LIS2MDL_INT_CRTL_REG);
 
   Adafruit_BusIO_RegisterBits active_high_bit =
       Adafruit_BusIO_RegisterBits(&int_ctrl, 1, 2);

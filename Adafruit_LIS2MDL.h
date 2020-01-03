@@ -1,19 +1,19 @@
 /***************************************************************************
-  This is a library for the LSM303AGR  magnentometer/compass
+  This is a library for the LIS2MDL magnentometer/compass
 
-  Designed specifically to work with the Adafruit LSM303DLHC Breakout
+  Designed specifically to work with the Adafruit LSM303AGR and LIS2MDL Breakouts
 
   These displays use I2C to communicate, 2 pins are required to interface.
 
   Adafruit invests time and resources providing this open source code,
-  please support Adafruit andopen-source hardware by purchasing products
+  please support Adafruit and open-source hardware by purchasing products
   from Adafruit!
 
   Written by Bryan Siepert for Adafruit Industries.
   BSD license, all text above must be included in any redistribution
  ***************************************************************************/
-#ifndef LSM303AGR_MAG_H
-#define LSM303AGR_MAG_H
+#ifndef LIS2MDL_MAG_H
+#define LIS2MDL_MAG_H
 
 #include <Adafruit_BusIO_Register.h>
 
@@ -26,43 +26,43 @@
     -----------------------------------------------------------------------*/
 #define _ADDRESS_MAG 0x1E //< Default address
 #define _CHIP_ID 0x40     //< Chip ID from WHO_AM_I register
-#define LSM303AGR_MAG_LSB 1.5
-#define LSM303AGR_MILLIGAUSS_TO_MICROTESLA 0.1
+#define LIS2MDL_MAG_LSB 1.5
+#define LIS2MDL_MILLIGAUSS_TO_MICROTESLA 0.1
 /*=========================================================================*/
 
 typedef enum {
-  LSM303AGR_OFFSET_X_REG_L = 0x45,
-  LSM303AGR_OFFSET_X_REG_H = 0x46,
-  LSM303AGR_OFFSET_Y_REG_L = 0x47,
-  LSM303AGR_OFFSET_Y_REG_H = 0x48,
-  LSM303AGR_OFFSET_Z_REG_L = 0x49,
-  LSM303AGR_OFFSET_Z_REG_H = 0x4A,
-  LSM303AGR_WHO_AM_I = 0x4F,
-  LSM303AGR_CFG_REG_A = 0x60,
-  LSM303AGR_CFG_REG_B = 0x61,
-  LSM303AGR_CFG_REG_C = 0x62,
-  LSM303AGR_INT_CRTL_REG = 0x63,
-  LSM303AGR_INT_SOURCE_REG = 0x64,
-  LSM303AGR_INT_THS_L_REG = 0x65,
-  LSM303AGR_STATUS_REG = 0x67,
-  LSM303AGR_OUTX_L_REG = 0x68,
-  LSM303AGR_OUTX_H_REG = 0x69,
-  LSM303AGR_OUTY_L_REG = 0x6A,
-  LSM303AGR_OUTY_H_REG = 0x6B,
-  LSM303AGR_OUTZ_L_REG = 0x6C,
-  LSM303AGR_OUTZ_H_REG = 0x6D,
-} lsm303AGRMagRegisters_t;
+  LIS2MDL_OFFSET_X_REG_L = 0x45,
+  LIS2MDL_OFFSET_X_REG_H = 0x46,
+  LIS2MDL_OFFSET_Y_REG_L = 0x47,
+  LIS2MDL_OFFSET_Y_REG_H = 0x48,
+  LIS2MDL_OFFSET_Z_REG_L = 0x49,
+  LIS2MDL_OFFSET_Z_REG_H = 0x4A,
+  LIS2MDL_WHO_AM_I = 0x4F,
+  LIS2MDL_CFG_REG_A = 0x60,
+  LIS2MDL_CFG_REG_B = 0x61,
+  LIS2MDL_CFG_REG_C = 0x62,
+  LIS2MDL_INT_CRTL_REG = 0x63,
+  LIS2MDL_INT_SOURCE_REG = 0x64,
+  LIS2MDL_INT_THS_L_REG = 0x65,
+  LIS2MDL_STATUS_REG = 0x67,
+  LIS2MDL_OUTX_L_REG = 0x68,
+  LIS2MDL_OUTX_H_REG = 0x69,
+  LIS2MDL_OUTY_L_REG = 0x6A,
+  LIS2MDL_OUTY_H_REG = 0x6B,
+  LIS2MDL_OUTZ_L_REG = 0x6C,
+  LIS2MDL_OUTZ_H_REG = 0x6D,
+} lis2mdl_register_t;
 /*=========================================================================*/
 
 /*=========================================================================
     MAGNETOMETER UPDATE RATE SETTINGS
     -----------------------------------------------------------------------*/
 typedef enum {
-  LSM303AGR_RATE_10_HZ,  //< 10 Hz
-  LSM303AGR_RATE_20_HZ,  //< 20 Hz
-  LSM303AGR_RATE_50_HZ,  //< 50 Hz
-  LSM303AGR_RATE_100_HZ, //< 100 Hz
-} lsm303AGRMagRate;
+  LIS2MDL_RATE_10_HZ,  //< 10 Hz
+  LIS2MDL_RATE_20_HZ,  //< 20 Hz
+  LIS2MDL_RATE_50_HZ,  //< 50 Hz
+  LIS2MDL_RATE_100_HZ, //< 100 Hz
+} lis2mdl_rate_t;
 /*=========================================================================*/
 
 /**************************************************************************/
@@ -70,11 +70,11 @@ typedef enum {
     @brief  a data thing
 */
 /**************************************************************************/
-typedef struct lsm303AGRMagData_s {
+typedef struct lis2mdl_data {
   int16_t x; ///< x-axis raw data
   int16_t y; ///< y-axis raw data
   int16_t z; ///< z-axis raw data
-} lsm303AGRMagData;
+} lis2mdl_data_t;
 /*=========================================================================*/
 
 /**************************************************************************/
@@ -82,21 +82,21 @@ typedef struct lsm303AGRMagData_s {
     @brief  Unified sensor driver for the magnetometer
 */
 /**************************************************************************/
-class Adafruit_LSM303AGR_Mag_Unified : public Adafruit_Sensor {
+class Adafruit_LIS2MDL : public Adafruit_Sensor {
 public:
-  Adafruit_LSM303AGR_Mag_Unified(int32_t sensorID = -1);
+  Adafruit_LIS2MDL(int32_t sensorID = -1);
 
   bool begin(uint8_t i2c_addr = _ADDRESS_MAG, TwoWire *wire = &Wire);
 
-  lsm303AGRMagRate getDataRate();
-  void setDataRate(lsm303AGRMagRate rate);
+  lis2mdl_rate_t getDataRate();
+  void setDataRate(lis2mdl_rate_t rate);
   bool getEvent(sensors_event_t *);
   void getSensor(sensor_t *);
   void reset(void);
 
   void enableInterrupts(bool);
   void interruptsActiveHigh(bool);
-  lsm303AGRMagData raw; ///< struct instance to hold raw data
+  lis2mdl_data_t raw; ///< struct instance to hold raw data
 
 private:
   int32_t _sensorID;
