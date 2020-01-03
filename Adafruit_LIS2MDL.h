@@ -1,7 +1,8 @@
 /***************************************************************************
   This is a library for the LIS2MDL magnentometer/compass
 
-  Designed specifically to work with the Adafruit LSM303AGR and LIS2MDL Breakouts
+  Designed specifically to work with the Adafruit LSM303AGR and LIS2MDL
+ Breakouts
 
   These displays use I2C to communicate, 2 pins are required to interface.
 

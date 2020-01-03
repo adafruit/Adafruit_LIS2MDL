@@ -1,7 +1,8 @@
 /***************************************************************************
   This is a library for the LIS2MDL Magnentometer/compass
 
-  Designed specifically to work with the Adafruit LSM303AGR and LIS2MDL Breakouts
+  Designed specifically to work with the Adafruit LSM303AGR and LIS2MDL
+ Breakouts
 
   These displays use I2C to communicate, 2 pins are required to interface.
 
@@ -59,8 +60,7 @@ void Adafruit_LIS2MDL::read() {
     @param sensorID an option ID to differentiate the sensor from others
 */
 /**************************************************************************/
-Adafruit_LIS2MDL::Adafruit_LIS2MDL(
-    int32_t sensorID) {
+Adafruit_LIS2MDL::Adafruit_LIS2MDL(int32_t sensorID) {
   _sensorID = sensorID;
 
   // Clear the raw mag data
@@ -228,8 +228,8 @@ void Adafruit_LIS2MDL::getSensor(sensor_t *sensor) {
     @brief Enable interrupts
     @param enable Set to True to enable interrupts, set to False to disable
 */
-void Adafruit_LIS2MDL::enableInterrupts(bool enable){
-  Adafruit_BusIO_Register int_ctrl=
+void Adafruit_LIS2MDL::enableInterrupts(bool enable) {
+  Adafruit_BusIO_Register int_ctrl =
       Adafruit_BusIO_Register(i2c_dev, LIS2MDL_INT_CRTL_REG);
   Adafruit_BusIO_Register cfg_c =
       Adafruit_BusIO_Register(i2c_dev, LIS2MDL_CFG_REG_C);
@@ -241,7 +241,6 @@ void Adafruit_LIS2MDL::enableInterrupts(bool enable){
 
   enable_ints.write(enable);
   int_pin_output.write(enable);
-
 }
 
 /*************************************************************************/
@@ -250,8 +249,8 @@ void Adafruit_LIS2MDL::enableInterrupts(bool enable){
     @param active_high Set to true to make the int pin active high, false
     to set as active low
 */
-void Adafruit_LIS2MDL::interruptsActiveHigh(bool active_high){
-  Adafruit_BusIO_Register int_ctrl=
+void Adafruit_LIS2MDL::interruptsActiveHigh(bool active_high) {
+  Adafruit_BusIO_Register int_ctrl =
       Adafruit_BusIO_Register(i2c_dev, LIS2MDL_INT_CRTL_REG);
 
   Adafruit_BusIO_RegisterBits active_high_bit =

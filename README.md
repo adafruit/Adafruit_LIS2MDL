@@ -1,4 +1,4 @@
-Adafruit_LIS2MDL [![Build Status](https://travis-ci.com/adafruit/Adafruit_LIS2MDL.svg?branch=master)](https://travis-ci.com/adafruit/Adafruit_LIS2MDL)
+Adafruit_LIS2MDL [![Build Status](https://github.com/adafruit/Adafruit_LIS2MDL/workflows/Arduino%20Library%20CI/badge.svg)](https://github.com/adafruit/Adafruit_LIS2MDL/actions)
 ================
 
 <a href="https://www.adafruit.com/product/1120"><img src="assets/board.jpg?raw=true" width="500px"></a>
