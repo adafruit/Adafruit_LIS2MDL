@@ -17,7 +17,9 @@ Adafruit invests time and resources providing this open source code, please supp
 ## About the LIS2MDL ##
 
 The LIS2MDL is a 3-axis magnetometer made by ST. Additionally, the LIS2MDL is available packaged with an accelerometer in the ST LSM303AGR 6-dof IMUs. The magnetometer measures magnetic force, which is useful to detect magnetic north.
+
 More information on the LIS2MDL can be found in the datasheet: https://www.st.com/resource/en/datasheet/lis2mdl.pdf
+
 Information on the LSM303AGR can be found in the datasheet: http://www.adafruit.com/datasheets/LSM303AGRC.PDF
 
 ## What is the Adafruit Unified Sensor Library? ##
