@@ -1,9 +1,9 @@
 #include <Adafruit_SSD1306.h>
 #include <Adafruit_Sensor.h>
-#include <Adafruit_LSM303AGR_Mag.h>
+#include <Adafruit_LIS2MDL.h>
 #include <Adafruit_LSM303_Accel.h>
 
-Adafruit_LSM303AGR_Mag_Unified mag = Adafruit_LSM303AGR_Mag_Unified(12345);
+Adafruit_LIS2MDL mag = Adafruit_LIS2MDL(12345);
 Adafruit_LSM303_Accel_Unified accel = Adafruit_LSM303_Accel_Unified(54321);
 
 Adafruit_SSD1306 display = Adafruit_SSD1306(128, 32, &Wire);
@@ -11,17 +11,17 @@ Adafruit_SSD1306 display = Adafruit_SSD1306(128, 32, &Wire);
 void setup() {
   Serial.begin(115200);
   //while (!Serial);
-  Serial.println("LSM303AGR OLED demo");
+  Serial.println("LIS2MDL OLED demo");
 
   if(!mag.begin())
   {
-    /* There was a problem detecting the LSM303 ... check your connections */
-    Serial.println("Ooops, no LSM303 detected ... Check your wiring!");
+    /* There was a problem detecting the LIS2MDL ... check your connections */
+    Serial.println("Ooops, no LIS2MDL detected ... Check your wiring!");
     while(1);
   }
   if (!accel.begin()) {
-    /* There was a problem detecting the ADXL345 ... check your connections */
-    Serial.println("Ooops, no LSM303 detected ... Check your wiring!");
+    /* There was a problem detecting the LSM303 ... check your connections */
+    Serial.println("Ooops, no LSM303 Accelerometer detected ... Check your wiring!");
     while (1)
       ;
   }
