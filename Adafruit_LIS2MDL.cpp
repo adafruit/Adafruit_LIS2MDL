@@ -39,9 +39,8 @@
 /**************************************************************************/
 void Adafruit_LIS2MDL::read() {
 
-  Adafruit_BusIO_Register data_reg =
-    Adafruit_BusIO_Register(i2c_dev, spi_dev, ADDRBIT8_HIGH_TOREAD,
-			    LIS2MDL_OUTX_L_REG, 6);
+  Adafruit_BusIO_Register data_reg = Adafruit_BusIO_Register(
+      i2c_dev, spi_dev, ADDRBIT8_HIGH_TOREAD, LIS2MDL_OUTX_L_REG, 6);
 
   uint16_t buffer[3];
   data_reg.read((uint8_t *)buffer, 6);
@@ -115,7 +114,6 @@ boolean Adafruit_LIS2MDL::begin_SPI(uint8_t cs_pin, SPIClass *theSPI) {
   return _init();
 }
 
-
 /*!
  *    @brief  Sets up the hardware and initializes software SPI
  *    @param  cs_pin The arduino pin # connected to chip select
@@ -139,7 +137,6 @@ bool Adafruit_LIS2MDL::begin_SPI(int8_t cs_pin, int8_t sck_pin, int8_t miso_pin,
   return _init();
 }
 
-
 /*!
  *    @brief  Common initialization code for I2C & SPI
  *    @return True if initialization was successful, otherwise false.
@@ -147,16 +144,15 @@ bool Adafruit_LIS2MDL::begin_SPI(int8_t cs_pin, int8_t sck_pin, int8_t miso_pin,
 bool Adafruit_LIS2MDL::_init(void) {
   if (spi_dev) {
     // enable 4-wire SPI and disable I2C
-      Adafruit_BusIO_Register cfg_reg = 
-	Adafruit_BusIO_Register(spi_dev, 0x62, ADDRBIT8_HIGH_TOREAD);
-      cfg_reg.write(0b00100100);
-      delay(10);
+    Adafruit_BusIO_Register cfg_reg =
+        Adafruit_BusIO_Register(spi_dev, 0x62, ADDRBIT8_HIGH_TOREAD);
+    cfg_reg.write(0b00100100);
+    delay(10);
   }
 
   // Check connection
-  Adafruit_BusIO_Register chip_id =
-    Adafruit_BusIO_Register(i2c_dev, spi_dev, ADDRBIT8_HIGH_TOREAD,
-			      LIS2MDL_WHO_AM_I, 1);
+  Adafruit_BusIO_Register chip_id = Adafruit_BusIO_Register(
+      i2c_dev, spi_dev, ADDRBIT8_HIGH_TOREAD, LIS2MDL_WHO_AM_I, 1);
 
   // make sure we're talking to the right chip
   if (chip_id.read() != _CHIP_ID) {
@@ -164,8 +160,8 @@ bool Adafruit_LIS2MDL::_init(void) {
     return false;
   }
 
-  config_a = new Adafruit_BusIO_Register(i2c_dev, spi_dev, ADDRBIT8_HIGH_TOREAD, 
-					 LIS2MDL_CFG_REG_A, 1);
+  config_a = new Adafruit_BusIO_Register(i2c_dev, spi_dev, ADDRBIT8_HIGH_TOREAD,
+                                         LIS2MDL_CFG_REG_A, 1);
 
   // enable int latching
   reset();
@@ -177,9 +173,8 @@ bool Adafruit_LIS2MDL::_init(void) {
  */
 void Adafruit_LIS2MDL::reset(void) {
 
-  Adafruit_BusIO_Register config_c =
-      Adafruit_BusIO_Register(i2c_dev, spi_dev, ADDRBIT8_HIGH_TOREAD,
-			      LIS2MDL_CFG_REG_C, 1);
+  Adafruit_BusIO_Register config_c = Adafruit_BusIO_Register(
+      i2c_dev, spi_dev, ADDRBIT8_HIGH_TOREAD, LIS2MDL_CFG_REG_C, 1);
 
   Adafruit_BusIO_RegisterBits reset =
       Adafruit_BusIO_RegisterBits(config_a, 1, 5);
@@ -206,10 +201,10 @@ void Adafruit_LIS2MDL::reset(void) {
 
   if (spi_dev) {
     // enable 4-wire SPI and disable I2C
-      Adafruit_BusIO_Register cfg_reg = 
-	Adafruit_BusIO_Register(spi_dev, 0x62, ADDRBIT8_HIGH_TOREAD);
-      cfg_reg.write(0b00100100);
-      delay(10);
+    Adafruit_BusIO_Register cfg_reg =
+        Adafruit_BusIO_Register(spi_dev, 0x62, ADDRBIT8_HIGH_TOREAD);
+    cfg_reg.write(0b00100100);
+    delay(10);
   }
 
   bdu.write(1);
@@ -295,7 +290,7 @@ void Adafruit_LIS2MDL::getSensor(sensor_t *sensor) {
   sensor->type = SENSOR_TYPE_MAGNETIC_FIELD;
   sensor->min_delay = 0;
   sensor->max_value = 5000;  // 50 gauss = 5000 uTesla
-  sensor->min_value = -5000;  // -50 gauss = -5000 uTesla
+  sensor->min_value = -5000; // -50 gauss = -5000 uTesla
   sensor->resolution = 0.15; // 1.65 gauss = 0.15 uTesla
 }
 
@@ -305,12 +300,10 @@ void Adafruit_LIS2MDL::getSensor(sensor_t *sensor) {
     @param enable Set to True to enable interrupts, set to False to disable
 */
 void Adafruit_LIS2MDL::enableInterrupts(bool enable) {
-  Adafruit_BusIO_Register int_ctrl =
-      Adafruit_BusIO_Register(i2c_dev, spi_dev, ADDRBIT8_HIGH_TOREAD,
-			      LIS2MDL_INT_CRTL_REG);
-  Adafruit_BusIO_Register cfg_c =
-      Adafruit_BusIO_Register(i2c_dev, spi_dev, ADDRBIT8_HIGH_TOREAD,
-			      LIS2MDL_CFG_REG_C);
+  Adafruit_BusIO_Register int_ctrl = Adafruit_BusIO_Register(
+      i2c_dev, spi_dev, ADDRBIT8_HIGH_TOREAD, LIS2MDL_INT_CRTL_REG);
+  Adafruit_BusIO_Register cfg_c = Adafruit_BusIO_Register(
+      i2c_dev, spi_dev, ADDRBIT8_HIGH_TOREAD, LIS2MDL_CFG_REG_C);
 
   Adafruit_BusIO_RegisterBits enable_ints =
       Adafruit_BusIO_RegisterBits(&int_ctrl, 1, 0);
@@ -328,9 +321,8 @@ void Adafruit_LIS2MDL::enableInterrupts(bool enable) {
     to set as active low
 */
 void Adafruit_LIS2MDL::interruptsActiveHigh(bool active_high) {
-  Adafruit_BusIO_Register int_ctrl =
-      Adafruit_BusIO_Register(i2c_dev, spi_dev, ADDRBIT8_HIGH_TOREAD,
-			      LIS2MDL_INT_CRTL_REG);
+  Adafruit_BusIO_Register int_ctrl = Adafruit_BusIO_Register(
+      i2c_dev, spi_dev, ADDRBIT8_HIGH_TOREAD, LIS2MDL_INT_CRTL_REG);
 
   Adafruit_BusIO_RegisterBits active_high_bit =
       Adafruit_BusIO_RegisterBits(&int_ctrl, 1, 2);
