@@ -19,6 +19,7 @@
 #include <Adafruit_BusIO_Register.h>
 
 #include <Adafruit_I2CDevice.h>
+#include <Adafruit_SPIDevice.h>
 #include <Adafruit_Sensor.h>
 #include <Wire.h>
 
@@ -88,6 +89,9 @@ public:
   Adafruit_LIS2MDL(int32_t sensorID = -1);
 
   bool begin(uint8_t i2c_addr = _ADDRESS_MAG, TwoWire *wire = &Wire);
+  bool begin_SPI(uint8_t cs_pin, SPIClass *theSPI = &SPI);
+  bool begin_SPI(int8_t cs_pin, int8_t sck_pin, int8_t miso_pin,
+                 int8_t mosi_pin);
 
   lis2mdl_rate_t getDataRate();
   void setDataRate(lis2mdl_rate_t rate);
@@ -100,11 +104,15 @@ public:
   lis2mdl_data_t raw; ///< struct instance to hold raw data
 
 private:
+  bool _init(void);
+
   int32_t _sensorID;
   Adafruit_BusIO_Register *config_a;
 
   void read(void);
-  Adafruit_I2CDevice *i2c_dev;
+
+  Adafruit_I2CDevice *i2c_dev = NULL;
+  Adafruit_SPIDevice *spi_dev = NULL;
 };
 
 #endif
