@@ -88,6 +88,12 @@ Public Member Functions</h2></td></tr>
 <tr class="memitem:a8cb6ce2186442a8a63e52945e02088ff"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_adafruit___l_i_s2_m_d_l.html#a8cb6ce2186442a8a63e52945e02088ff">begin</a> (uint8_t i2c_addr=_ADDRESS_MAG, TwoWire *wire=&amp;Wire)</td></tr>
 <tr class="memdesc:a8cb6ce2186442a8a63e52945e02088ff"><td class="mdescLeft">&#160;</td><td class="mdescRight">Sets up the hardware and initializes I2C.  <a href="#a8cb6ce2186442a8a63e52945e02088ff">More...</a><br /></td></tr>
 <tr class="separator:a8cb6ce2186442a8a63e52945e02088ff"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a51051a5d1ce585830e9c5ee328b7b302"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_adafruit___l_i_s2_m_d_l.html#a51051a5d1ce585830e9c5ee328b7b302">begin_SPI</a> (uint8_t cs_pin, SPIClass *theSPI=&amp;SPI)</td></tr>
+<tr class="memdesc:a51051a5d1ce585830e9c5ee328b7b302"><td class="mdescLeft">&#160;</td><td class="mdescRight">Sets up the hardware and initializes hardware SPI.  <a href="#a51051a5d1ce585830e9c5ee328b7b302">More...</a><br /></td></tr>
+<tr class="separator:a51051a5d1ce585830e9c5ee328b7b302"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a39f075dc8d01ca06c122cbc5f349c1bb"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_adafruit___l_i_s2_m_d_l.html#a39f075dc8d01ca06c122cbc5f349c1bb">begin_SPI</a> (int8_t cs_pin, int8_t sck_pin, int8_t miso_pin, int8_t mosi_pin)</td></tr>
+<tr class="memdesc:a39f075dc8d01ca06c122cbc5f349c1bb"><td class="mdescLeft">&#160;</td><td class="mdescRight">Sets up the hardware and initializes software SPI.  <a href="#a39f075dc8d01ca06c122cbc5f349c1bb">More...</a><br /></td></tr>
+<tr class="separator:a39f075dc8d01ca06c122cbc5f349c1bb"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aaabe5605a8a7620f43cb6945ec0541af"><td class="memItemLeft" align="right" valign="top">lis2mdl_rate_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_adafruit___l_i_s2_m_d_l.html#aaabe5605a8a7620f43cb6945ec0541af">getDataRate</a> ()</td></tr>
 <tr class="memdesc:aaabe5605a8a7620f43cb6945ec0541af"><td class="mdescLeft">&#160;</td><td class="mdescRight">Gets the magnetometer's update rate.  <a href="#aaabe5605a8a7620f43cb6945ec0541af">More...</a><br /></td></tr>
 <tr class="separator:aaabe5605a8a7620f43cb6945ec0541af"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -180,6 +186,96 @@ Public Attributes</h2></td></tr>
   <table class="params">
     <tr><td class="paramname">i2c_address</td><td>The I2C address to be used. </td></tr>
     <tr><td class="paramname">wire</td><td>The Wire object to be used for I2C connections. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>True if initialization was successful, otherwise false. </dd></dl>
+
+</div>
+</div>
+<a id="a51051a5d1ce585830e9c5ee328b7b302"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a51051a5d1ce585830e9c5ee328b7b302">&#9670;&nbsp;</a></span>begin_SPI() <span class="overload">[1/2]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">boolean Adafruit_LIS2MDL::begin_SPI </td>
+          <td>(</td>
+          <td class="paramtype">uint8_t&#160;</td>
+          <td class="paramname"><em>cs_pin</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">SPIClass *&#160;</td>
+          <td class="paramname"><em>theSPI</em> = <code>&amp;SPI</code>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Sets up the hardware and initializes hardware SPI. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">cs_pin</td><td>The arduino pin # connected to chip select </td></tr>
+    <tr><td class="paramname">theSPI</td><td>The SPI object to be used for SPI connections. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>True if initialization was successful, otherwise false. </dd></dl>
+
+</div>
+</div>
+<a id="a39f075dc8d01ca06c122cbc5f349c1bb"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a39f075dc8d01ca06c122cbc5f349c1bb">&#9670;&nbsp;</a></span>begin_SPI() <span class="overload">[2/2]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool Adafruit_LIS2MDL::begin_SPI </td>
+          <td>(</td>
+          <td class="paramtype">int8_t&#160;</td>
+          <td class="paramname"><em>cs_pin</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int8_t&#160;</td>
+          <td class="paramname"><em>sck_pin</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int8_t&#160;</td>
+          <td class="paramname"><em>miso_pin</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int8_t&#160;</td>
+          <td class="paramname"><em>mosi_pin</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Sets up the hardware and initializes software SPI. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">cs_pin</td><td>The arduino pin # connected to chip select </td></tr>
+    <tr><td class="paramname">sck_pin</td><td>The arduino pin # connected to SPI clock </td></tr>
+    <tr><td class="paramname">miso_pin</td><td>The arduino pin # connected to SPI MISO </td></tr>
+    <tr><td class="paramname">mosi_pin</td><td>The arduino pin # connected to SPI MOSI </td></tr>
   </table>
   </dd>
 </dl>
