@@ -212,10 +212,7 @@ void Adafruit_LIS2MDL::reset(void) {
 
   mode.write(0x00); // set to continuous mode
 
-  // self._int_latched = True
-  // self._int_reg_polarity = True
-  // self._int_iron_off = False
-  // self._interrupt_pin_putput = True
+  setDataRate(LIS2MDL_RATE_100_HZ);
 }
 
 /**************************************************************************/
