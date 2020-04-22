@@ -1,4 +1,4 @@
-Adafruit_LIS2MDL [![Build Status](https://github.com/adafruit/Adafruit_LIS2MDL/workflows/Arduino%20Library%20CI/badge.svg)](https://github.com/adafruit/Adafruit_LIS2MDL/actions)
+Adafruit_LIS2MDL [![Build Status](https://github.com/adafruit/Adafruit_LIS2MDL/workflows/Arduino%20Library%20CI/badge.svg)](https://github.com/adafruit/Adafruit_LIS2MDL/actions)[![Documentation](https://github.com/adafruit/ci-arduino/blob/master/assets/doxygen_badge.svg)](http://adafruit.github.io/Adafruit_LIS2MDL/html/index.html)
 ================
 
 <a href="https://www.adafruit.com/product/1120"><img src="assets/board.jpg?raw=true" width="500px"></a>
