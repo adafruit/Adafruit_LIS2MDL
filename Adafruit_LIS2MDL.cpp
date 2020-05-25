@@ -16,10 +16,10 @@
  * please support Adafruit and open-source hardware by purchasing products
  * from Adafruit!
  *
- * @section author Author 
+ * @section author Author
  *
  * Written by Bryan Siepert for Adafruit Industries.
- * 
+ *
  * @section license License
  *
  * BSD license, all text above must be included in any redistribution
