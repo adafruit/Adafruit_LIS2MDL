@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['x',['x',['../structlis2mdl__data.html#aa0ba3f1280544aaf0e9c9e53ccb98b42',1,'lis2mdl_data']]]
+  ['setdatarate',['setDataRate',['../class_adafruit___l_i_s2_m_d_l.html#acfb99e52c447633cb36b6e8a38db0df5',1,'Adafruit_LIS2MDL']]]
 ];

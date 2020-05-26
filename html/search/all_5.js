@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['lis2mdl_5fdata',['lis2mdl_data',['../structlis2mdl__data.html',1,'']]]
+  ['interruptsactivehigh',['interruptsActiveHigh',['../class_adafruit___l_i_s2_m_d_l.html#a89fc563c439e76119a682805a416be3e',1,'Adafruit_LIS2MDL']]]
 ];
