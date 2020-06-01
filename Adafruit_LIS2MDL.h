@@ -1,18 +1,21 @@
-/***************************************************************************
-  This is a library for the LIS2MDL magnentometer/compass
+/*!
+ * @file Adafruit_LIS2MDL.h
+ *
+ * This is a library for the LIS2MDL magnentometer/compass
+ *
+ * Designed specifically to work with the Adafruit LSM303AGR and LIS2MDL
+ * Breakouts
+ *
+ * These displays use I2C to communicate, 2 pins are required to interface.
+ *
+ * Adafruit invests time and resources providing this open source code,
+ * please support Adafruit and open-source hardware by purchasing products
+ * from Adafruit!
+ *
+ * Written by Bryan Siepert for Adafruit Industries.
+ * BSD license, all text above must be included in any redistribution
+ */
 
-  Designed specifically to work with the Adafruit LSM303AGR and LIS2MDL
- Breakouts
-
-  These displays use I2C to communicate, 2 pins are required to interface.
-
-  Adafruit invests time and resources providing this open source code,
-  please support Adafruit and open-source hardware by purchasing products
-  from Adafruit!
-
-  Written by Bryan Siepert for Adafruit Industries.
-  BSD license, all text above must be included in any redistribution
- ***************************************************************************/
 #ifndef LIS2MDL_MAG_H
 #define LIS2MDL_MAG_H
 
@@ -26,12 +29,16 @@
 /*=========================================================================
     I2C ADDRESS/BITS
     -----------------------------------------------------------------------*/
-#define _ADDRESS_MAG 0x1E //< Default address
-#define _CHIP_ID 0x40     //< Chip ID from WHO_AM_I register
-#define LIS2MDL_MAG_LSB 1.5
-#define LIS2MDL_MILLIGAUSS_TO_MICROTESLA 0.1
+#define _ADDRESS_MAG 0x1E   //!< Default address
+#define _CHIP_ID 0x40       //!< Chip ID from WHO_AM_I register
+#define LIS2MDL_MAG_LSB 1.5 //!< Sensitivity
+#define LIS2MDL_MILLIGAUSS_TO_MICROTESLA                                       \
+  0.1 //!< Conversion rate of Milligauss to Microtesla
 /*=========================================================================*/
 
+/*!
+ * @brief LIS2MDL I2C register address bits
+ */
 typedef enum {
   LIS2MDL_OFFSET_X_REG_L = 0x45,
   LIS2MDL_OFFSET_X_REG_H = 0x46,
@@ -56,14 +63,14 @@ typedef enum {
 } lis2mdl_register_t;
 /*=========================================================================*/
 
-/*=========================================================================
-    MAGNETOMETER UPDATE RATE SETTINGS
-    -----------------------------------------------------------------------*/
+/*!
+ * @brief Magnetometer update rate settings
+ */
 typedef enum {
-  LIS2MDL_RATE_10_HZ,  //< 10 Hz
-  LIS2MDL_RATE_20_HZ,  //< 20 Hz
-  LIS2MDL_RATE_50_HZ,  //< 50 Hz
-  LIS2MDL_RATE_100_HZ, //< 100 Hz
+  LIS2MDL_RATE_10_HZ,  //!< 10 Hz
+  LIS2MDL_RATE_20_HZ,  //!< 20 Hz
+  LIS2MDL_RATE_50_HZ,  //!< 50 Hz
+  LIS2MDL_RATE_100_HZ, //!< 100 Hz
 } lis2mdl_rate_t;
 /*=========================================================================*/
 

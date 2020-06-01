@@ -1,18 +1,31 @@
-/***************************************************************************
-  This is a library for the LIS2MDL Magnentometer/compass
+/*!
+ * @file Adafruit_LIS2MDL.cpp
+ *
+ * @mainpage Adafruit LIS2MDL Breakout
+ *
+ * @section intro_sec Introduction
+ *
+ * This is a library for the LIS2MDL Magnentometer/compass
+ *
+ * Designed specifically to work with the Adafruit LSM303AGR and LIS2MDL
+ * Breakouts
+ *
+ * These displays use I2C to communicate, 2 pins are required to interface.
+ *
+ * Adafruit invests time and resources providing this open source code,
+ * please support Adafruit and open-source hardware by purchasing products
+ * from Adafruit!
+ *
+ * @section author Author
+ *
+ * Written by Bryan Siepert for Adafruit Industries.
+ *
+ * @section license License
+ *
+ * BSD license, all text above must be included in any redistribution
+ *
+ */
 
-  Designed specifically to work with the Adafruit LSM303AGR and LIS2MDL
- Breakouts
-
-  These displays use I2C to communicate, 2 pins are required to interface.
-
-  Adafruit invests time and resources providing this open source code,
-  please support Adafruit and open-source hardware by purchasing products
-  from Adafruit!
-
-  Written by Bryan Siepert for Adafruit Industries.
-  BSD license, all text above must be included in any redistribution
- ***************************************************************************/
 #if ARDUINO >= 100
 #include "Arduino.h"
 #else
