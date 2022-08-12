@@ -198,9 +198,6 @@ void Adafruit_LIS2MDL::reset(void) {
   Adafruit_BusIO_RegisterBits mode =
       Adafruit_BusIO_RegisterBits(config_a, 2, 0);
 
-  Adafruit_BusIO_RegisterBits data_rate =
-      Adafruit_BusIO_RegisterBits(config_a, 2, 2);
-
   Adafruit_BusIO_RegisterBits temp_compensation =
       Adafruit_BusIO_RegisterBits(config_a, 1, 7);
 
