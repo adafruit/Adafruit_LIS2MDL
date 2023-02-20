@@ -1,13 +1,13 @@
 #include <Wire.h>
 #include <Adafruit_Sensor.h>
 #include <Adafruit_LIS2MDL.h>
-
+#include <float.h>
 
 Adafruit_LIS2MDL mag = Adafruit_LIS2MDL(12345);
 
-float MagMinX, MagMaxX;
-float MagMinY, MagMaxY;
-float MagMinZ, MagMaxZ;
+float MagMinX = FLT_MAX, MagMaxX = FLT_MIN;
+float MagMinY = FLT_MAX, MagMaxY = FLT_MIN;
+float MagMinZ = FLT_MAX, MagMaxZ = FLT_MIN;
 
 long lastDisplayTime;
 
