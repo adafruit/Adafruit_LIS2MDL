@@ -114,12 +114,12 @@ private:
   bool _init(void);
 
   int32_t _sensorID;
-  Adafruit_BusIO_Register *config_a;
+  Adafruit_BusIO_Register *config_a = nullptr;
 
   void read(void);
 
-  Adafruit_I2CDevice *i2c_dev = NULL;
-  Adafruit_SPIDevice *spi_dev = NULL;
+  Adafruit_I2CDevice *i2c_dev = nullptr;
+  Adafruit_SPIDevice *spi_dev = nullptr;
 };
 
 #endif
