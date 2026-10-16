@@ -114,7 +114,7 @@ private:
   bool _init(void);
 
   int32_t _sensorID;
-  Adafruit_BusIO_Register *config_a;
+  Adafruit_BusIO_Register *config_a = NULL;
 
   void read(void);
 
