@@ -97,7 +97,7 @@ bool Adafruit_LIS2MDL::begin(uint8_t i2c_address, TwoWire *wire) {
   if (!i2c_dev) {
     i2c_dev = new Adafruit_I2CDevice(i2c_address, wire);
   }
-  spi_dev = NULL;
+  spi_dev = nullptr;
 
   if (!i2c_dev->begin()) {
     return false;
@@ -113,7 +113,7 @@ bool Adafruit_LIS2MDL::begin(uint8_t i2c_address, TwoWire *wire) {
  *    @return True if initialization was successful, otherwise false.
  */
 boolean Adafruit_LIS2MDL::begin_SPI(uint8_t cs_pin, SPIClass *theSPI) {
-  i2c_dev = NULL;
+  i2c_dev = nullptr;
   if (!spi_dev) {
     spi_dev = new Adafruit_SPIDevice(cs_pin,
                                      1000000,               // frequency
@@ -137,7 +137,7 @@ boolean Adafruit_LIS2MDL::begin_SPI(uint8_t cs_pin, SPIClass *theSPI) {
  */
 bool Adafruit_LIS2MDL::begin_SPI(int8_t cs_pin, int8_t sck_pin, int8_t miso_pin,
                                  int8_t mosi_pin) {
-  i2c_dev = NULL;
+  i2c_dev = nullptr;
   if (!spi_dev) {
     spi_dev = new Adafruit_SPIDevice(cs_pin, sck_pin, miso_pin, mosi_pin,
                                      1000000,               // frequency

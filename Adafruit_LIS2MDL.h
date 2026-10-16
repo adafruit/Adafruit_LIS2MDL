@@ -118,8 +118,8 @@ private:
 
   void read(void);
 
-  Adafruit_I2CDevice *i2c_dev = NULL;
-  Adafruit_SPIDevice *spi_dev = NULL;
+  Adafruit_I2CDevice *i2c_dev = nullptr;
+  Adafruit_SPIDevice *spi_dev = nullptr;
 };
 
 #endif
